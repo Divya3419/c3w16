@@ -11,16 +11,26 @@ const Flex = styled.div``;
 // add style for button
 export const Button = styled.button``;
 export const SingleBook = () => {
+  const [data,setData]=useState([])
 //console.log(params);
+const {id}=useParams();
   useEffect(() => {
-    // make a GET request to http://localhost:8080/books/${id}`
-    // use useParams to get the id
+    const getdata=async()=>{
+    
+      let res=await fetch('http://localhost:8080/books')
+        let data=await res.json();
+        console.log(data);
+        setData(data)
+      
+      
+      }
+getdata();    
   }, []);
 
   return (
     <>
-      {/* added basic data you can add more and make a good UI around it */}
-      {/* {!!data && (
+     
+       {!!data && (
         <>
           <Flex>
             <img
@@ -38,7 +48,7 @@ export const SingleBook = () => {
             <Button>Edit</Button>
           </Link>
         </>
-      )} */}
+      )}
     </>
   );
 };

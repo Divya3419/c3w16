@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
- import axios from "axios";
+ //import axios from "axios";
 import { BookCard } from "./BookCard";
 import styled, { css } from "styled-components";
 
@@ -11,22 +11,23 @@ export const Grid = styled.div`
 
 const Books = () => {
   const [data, setData] = useState([]);
+  
   useEffect(() => {
+    const getdata=async()=>{
+    
+      let res=await fetch('http://localhost:8080/books')
+        let data=await res.json();
+        console.log(data);
+        setData(data)
+      
+      
+      }
+    
     getdata();
     
   }, []);
 
-  const getdata=async()=>{
-    axios.get('http://localhost:8080/books')
-    .then((res)=>{
-      //console.log(res);
-      const dAta=res.data
-     // console.log(dAta);
-     setData(dAta);
-    })
-    
-  }
-
+  
   return (
     <>
       <h1>Books</h1>

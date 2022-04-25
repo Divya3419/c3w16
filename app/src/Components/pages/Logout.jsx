@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const Logout = () => {
+  
   useEffect(() => {
     // get handleLogout call back from context
   }, []);

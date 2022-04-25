@@ -18,19 +18,25 @@ export const Login = () => {
 
   const [password, setPassword] = useState("");
   
- // const { token, handleLogin } = useContext(AuthContext);
+  const { token, handleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/books";
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-   // handleLogin(email, password);
+    handleLogin(email, password);
   };
-  //useEffect(() => {
-  //   if (token) {
-  //     navigate(from, { replace: true });
-  //   }
-  // }, [token]);
+
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token]);
+
+  
   return (
     <>
       <Form onSubmit={handleSubmit}>
